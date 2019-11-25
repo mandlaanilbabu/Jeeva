@@ -65,3 +65,31 @@ View the tag : git tag -1
 Tag details : git show tag_name
 delete tag : git tag -d tag_name
 
+git patch :- It is nothing but a text file similar to diff but it also contains metadata about commit ID,
+             author,date,commit message.
+creating a git patch file : git format-patch -1
+
+
+Git Branch commands:
+
+create : git branch branchname
+list the branches : git branch
+create a branch using checkout command
+ by copying contents from other branch : git checkout -b branchname
+delete a branch : git branch -D branchname
+rename a branch : git branch -m oldbranchname newbranchname
+merging two branches :
+         * Consider a scenario we have two branches and two developers,
+Branch Names : Master,develop
+developers name : fly1,fly2
+ * suppose fly1 is working on develop branch and made some changes in the source code and he commits 
+and pushed to the remote repo, Thn fly2 wants the same changes in master branch also, So instead of reimplementing
+the source code, he can do merge operation with develop branch using the command :
+git merge origin/develop
+
+Git hooks: .git/hooks location for hook files in git. it is a script that executes before or after events such as
+           commit,push,pull,merge
+
+
+
+
