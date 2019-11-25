@@ -1,0 +1,67 @@
+Centralized version contol system - Uses a central server to manage all the repositories, So if the server goes down 
+                                    the entire project source code will gone. Eg:- CVS,Subversion.
+
+Distributed version control system - But in case of DVCS every checkout is a backup for the source code,So if the remote 
+                                     server goes down there will not be high impact like CVCS. Eg : git
+
+Advantages :- fast,implicit backup,no need to rely on central server,security.
+
+Terminologies :-
+Local repository :- Its a repository where you can clone in the local server and do some git operations like add,delete 
+                    modify the entire branches or some files.
+
+Working directory :- Once you cloned to your git repo in local server. suppose if you add some file namely hello.txt to the 
+                     working directory using git add command thn the files will be moved to the staging area, 
+                     While performing git commit command the files will be moved from staging area and you can use 
+                     push command for permenant change in central repository.
+
+Workflow of git commit:-
+
+1.creating two files in git repository and while you performing git commit command,
+        * First it will create the blob objects for two files in .git/objects.
+        * Second it will create a tree object which will point to two blob objects.
+        *Finally it will create a commit object where it will be point to tree object.
+
+git object commands :-
+        * git cat-file commit "hash code" - to see the content in commit objects.
+        * git ls-tree "hashcode" - to see the blob files and nested tree objects.
+        * git cat-file blob "hash code"
+
+Git commands:-
+
+git --version - to check the git version.
+git clone url - checkout the repo in local server
+git log - to view the log details.
+git show "commit ID" - to view the commit details
+git diff - to review the changes.
+git add . - to move the files from working directory to the staging area.
+git commit -m "some txt" - To commit the changes.
+git push origin "branch name" - To push the changes from local to remote repo.
+git commit --amend -m "some txt" - To change the last commit Id and commit message with new changes in local repo.
+git stash - To store the present working directory in some temporary space, because you cannot commit the changes at that 
+            time due to some reasons.
+git stash list - To view the list of temporary workspaces in git.
+git stash pop - move the working directory from stack(temporary workspace) to the local repo branch.
+git mv filename destination - move the files from one location to another location.
+git mv oldfileName NewFilename - To rename the file.
+git rm filename - to remove the file in git.
+
+git reset command :-
+         It is used to revert or reset the changes. There are three types of reset operation.
+1.soft - cd/.git/refs/heads/branchname - to view the latest commit ID of the branch.You can reset the HEAD pointer by one 
+         step back using git reset command.
+         command : git reset --soft HEAD~
+
+2.mixed - It is similar to the default reset command
+
+3. Hard - When you have modified some changes in repo and u have moved that changes to staging area using git add command, then
+          thn to revert the changes in staging area, git reset --hard "commit ID" command is used.
+
+git tags :-
+     It is used to give specific meaningfull name to the specific version in the repository.
+
+Create tag command : git tag -a "Tag name" -m "some message about tag" HEAD or particular Commit ID
+View the tag : git tag -1
+Tag details : git show tag_name
+delete tag : git tag -d tag_name
+
